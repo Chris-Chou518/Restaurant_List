@@ -1,36 +1,3 @@
-# Restaurant list
-
-It is a list about different restaurants.
-
-## Getting Started
-
-1. Clone this project by terminal
-```
-https://github.com/Chris-Chou518/Restaurant_List.git
-```
-
-2. Install
-```
-cd Restaurant_List
-```
-```
-npm install 
-```
-```
-npm i nodemon
-```
-
-3. Find app.js and execute it
-```
-cd  app.js
-```
-```
-nodemon app.js
-```
-4. Use this project at http://localhost:3000
-
-
-
 # 餐廳清單 
 
 此專案僅提供搜尋關鍵字功能
@@ -69,16 +36,13 @@ nodemon app.js  //執行程式
 
 請至[http://localhost:3000](http://localhost:3000)開始使用程式
 
-## Test Data
+# 功能
+-搜尋關鍵字
 
-- Account
-  - email_1：asd@asd
-  - email_2：asd2@asd
-  - password：asd
-- Facebook
-  - email：restaurant_eppxhys_test@tfbnw.net
-  - password：asD333
-
+# prerequisites
+-node.js: 18.17.1
+-express: 4.18.2
+-express-handlebars: 7.1.2
 
 ## 使用工具
 
