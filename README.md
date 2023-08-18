@@ -40,9 +40,9 @@ nodemon app.js  //執行程式
 -搜尋關鍵字
 
 # prerequisites
--node.js: 18.17.1
--express: 4.18.2
--express-handlebars: 7.1.2
+- node.js: 18.17.1
+- express: 4.18.2
+- express-handlebars: 7.1.2
 
 ## 使用工具
 
