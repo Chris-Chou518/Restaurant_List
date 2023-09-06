@@ -5,12 +5,14 @@ const port = 3000
 // const restaurants = require('./public/jsons/restaurant.json').results
 
 const db = require('./models')
-const { raw } = require('mysql2')
+// const { raw } = require('mysql2')
 const Restaurant = db.Restaurant
 
 app.engine('.hbs',engine({extname:'.hbs'}))
 app.set('view engine', '.hbs')
+app.set('views','./views')
 
+app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
 
 app.get('/', (req, res) => {
@@ -54,17 +56,29 @@ app.get('/Restaurants/:id', (req, res) => {
 })
 
 //Create
-app.get('/Restaurants/new', (req, res) => {
-  return res.send('get new restaurant ')
+app.get('/Restaurants/one/new', (req, res) => {
+ return res.render('new')
 })
 app.post('/Restaurants', (req, res) => {
-
+  const body =req.body
+  return Restaurant.create({
+    name: body.name,
+    name_en: body.name_en,
+    category:body.category,
+    image:body.image,
+    location:body.location,
+    phone: body.phone,
+    google_map: body.google_map,
+    rating: body.rating,
+    description:body.description
+  })
+  .then(() => {res.redirect('/Restaurants')})   
 })
 
 //Update
 app.get('/Restaurants/:id/edit', (req, res) => {
   const id = req.params.id
-  return res.send(`get restaurant edit: ${id}`)
+  return res.render('edit')
 })
 app.put('/Restaurants/:id', (req, res) => {
   
