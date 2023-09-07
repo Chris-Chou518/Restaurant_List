@@ -30,8 +30,13 @@ npm install  //安裝套件
 ```
 
 4.開啟程式後輸入:
+//執行migration生成schema
 ```
-npx sequelize db:seed:all  //載入種子資料
+npx sequelize db:migrate
+```
+//載入種子資料
+```
+npx sequelize db:seed:all  
 ```
 
 ```
