@@ -58,8 +58,8 @@
                   <div class="position-absolute top-100 start-50 translate-middle">
                     <a href="/Restaurants/{{restaurant.id}}/edit" class="p-0 btn btn-outline-primary" type="button">edit</a>
                     <a href= "/Restaurants/{{restaurant.id}}" class="p-0 btn btn-outline-primary" type="button">detail</a>
-                    <form action='/Restaurants/:id?_method=delete' method="post" style="display:inline" >
-                      <button href="" class="p-0 btn btn-outline-danger" type="button">delete</button>
+                    <form action='/Restaurants/{{restaurant.id}}?_method=delete' method="post" style="display:inline" >
+                      <button class="p-0 btn btn-outline-danger" type="submit">delete</button>
                     </form>
                   </div>
                 </div>

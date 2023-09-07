@@ -104,7 +104,9 @@ app.put('/Restaurants/:id', (req, res) => {
 
 //Delete
 app.delete('/Restaurants/:id', (req,res) => {
-
+  const id =req.params.id
+  return Restaurant.destroy({where:{id}})
+  .then(() => res.redirect('/Restaurants'))
 })
 
 
