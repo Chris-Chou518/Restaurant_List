@@ -1,5 +1,6 @@
 const express = require('express')
 const {engine} =require('express-handlebars')
+const methodOverride = require('method-override')
 const app = express()
 const port = 3000
 // const restaurants = require('./public/jsons/restaurant.json').results
@@ -14,6 +15,7 @@ app.set('views','./views')
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.static('public'))
+app.use(methodOverride('_method'))
 
 app.get('/', (req, res) => {
   res.redirect('/Restaurants')
@@ -78,11 +80,26 @@ app.post('/Restaurants', (req, res) => {
 //Update
 app.get('/Restaurants/:id/edit', (req, res) => {
   const id = req.params.id
-  return res.render('edit')
+  return Restaurant.findByPk(id,{
+    raw:true
+  })
+  .then((restaurant) => res.render('edit',{restaurant}))
 })
 app.put('/Restaurants/:id', (req, res) => {
-  
-  
+  const body = req.body
+  const id = req.params.id
+  return Restaurant.update({
+    name: body.name,
+    name_en: body.name_en,
+    category:body.category,
+    image:body.image,
+    location:body.location,
+    phone: body.phone,
+    google_map: body.google_map,
+    rating: body.rating,
+    description:body.description
+},{where:{id:id}})
+  .then(() => res.redirect(`/Restaurants/${id}`))
 })
 
 //Delete

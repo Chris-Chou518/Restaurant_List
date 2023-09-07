@@ -1,1 +1,22 @@
-66666
+<form action="/Restaurants/{{restaurant.id}}?_method=put" method="post">
+  <label for="name">餐廳名稱:</label>
+  <input id="name" type="text" name="name" placeholder="please input name" required value="{{restaurant.name}}"><br>
+  <label for="name_en">英文名稱:</label>
+  <input id="name_en" type="text" name="name_en" placeholder="" value="{{restaurant.name_en}}"><br>
+  <label for="category">餐廳分類:</label>
+  <input id="category" type="text" name="category" placeholder="please input category" required value="{{restaurant.category}}"><br>
+  <label for="image">圖片網址:</label>
+  <input id="image" type="text" name="image" placeholder="please input image address" required value="{{restaurant.image}}"><br>
+  <label for="location">餐廳地址:</label>
+  <input id="location" type="text" name="location" placeholder="please input location" required value="{{restaurant.location}}"><br>
+  <label for="phone">餐廳電話:</label>
+  <input id="phone" type="text" name="phone" placeholder="please input phone" required value="{{restaurant.phone}}"><br>
+  <label for="google_map">地圖連結:</label>
+  <input id="google_map" type="text" name="google_map" placeholder="" value="{{restaurant.google_map}}"><br>
+  <label for="rating">星星評級:</label>
+  <input id="rating" type="text" name="rating" placeholder="" value="{{restaurant.rating}}"><br>
+  <label for="description">餐廳描述:</label>
+  <input id="description" type="text" name="description" placeholder="please input description" required value="{{restaurant.description}}"><br>
+  <button type="submit" class="btn btn-outline-success my-2">save</button>
+  <a href="/Restaurants" class="btn btn-outline-secondary my-2">back</a>
+</form>
