@@ -10,7 +10,7 @@
 -新增或編輯餐廳資訊
 -刪除餐廳資訊
 
-### 安裝
+## 安裝
 1.確認有安裝node.js、npm與nodemon套件
 
 2.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
@@ -30,17 +30,17 @@ npm install  //安裝套件
 ```
 
 4.開啟程式後輸入:
-//執行migration生成schema
+- 執行migration生成schema
 ```
 npx sequelize db:migrate
 ```
-//載入種子資料
+- 載入種子資料
 ```
 npx sequelize db:seed:all  
 ```
-
+- 執行程式
 ```
-npm run dev  //執行程式
+npm run dev  
 ```
 
 請至[http://localhost:3000](http://localhost:3000)開始使用程式
@@ -49,7 +49,7 @@ npm run dev  //執行程式
 ```
 ctrl+c
 ```
-# prerequisites
+## prerequisites
 - node.js: 18.17.1
 - express: 4.18.2
 - express-handlebars: 7.1.2
