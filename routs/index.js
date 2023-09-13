@@ -8,4 +8,5 @@ router.get('/', (req, res) => {
   res.redirect('/Restaurants')
 })
 
+
 module.exports = router

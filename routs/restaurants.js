@@ -6,7 +6,7 @@ const Restaurant = db.Restaurant
 
 //Read
 router.get('/Restaurants', (req, res) => {
-  const keywords = req.query.keyword
+  const keywords = req.query.keyword || req.query.category
   return Restaurant.findAll(
     {raw:true}
   )

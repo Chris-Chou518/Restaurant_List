@@ -30,7 +30,59 @@
     </div>
   </div>
 </div>
-<a href='/Restaurants/one/new' class="btn btn-outline-success mx-5" >Add new restaurant</a>
+
+<div class="d-flex justify-content-between">
+  <a href='/Restaurants/one/new' class="btn btn-outline-success mx-5">Add new restaurant</a>
+  <div class="dropdown mx-5">
+    <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+      Category
+    </button>
+    <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="#">
+        <form action="/Restaurants" method="get">
+          <input type="hidden" name="category" value="中東">
+          <button type="submit">中東料理</button>
+        </form>
+      </a></li>
+      <li><a class="dropdown-item" href="#">
+        <form action="/Restaurants" method="get">
+          <input type="hidden" name="category" value="日本">
+          <button type="submit">日本料理</button>
+        </form>
+      </a></li>
+      <li><a class="dropdown-item" href="#">
+        <form action="/Restaurants" method="get">
+          <input type="hidden" name="category" value="美式">
+          <button type="submit">美式料理</button>
+        </form>
+      </a></li>
+      <li><a class="dropdown-item" href="#">
+        <form action="/Restaurants" method="get">
+          <input type="hidden" name="category" value="義式">
+          <button type="submit">義式料理</button>
+        </form>
+      </a></li>
+      <li><a class="dropdown-item" href="#">
+        <form action="/Restaurants" method="get">
+          <input type="hidden" name="category" value="中東料理">
+          <button type="submit">中東料理</button>
+        </form>
+      </a></li>
+      <li><a class="dropdown-item" href="#">
+        <form action="/Restaurants" method="get">
+          <input type="hidden" name="category" value="咖啡">
+          <button type="submit">咖啡廳</button>
+        </form>
+      </a></li>
+      <li><a class="dropdown-item" href="#">
+          <form action="/Restaurants" method="get">
+            <input type="hidden" name="category" value="酒">
+            <button type="submit">酒吧</button>
+          </form>
+        </a></li>
+    </ul>
+  </div>
+</div>
 
 <!-- restaurant list -->
 <div class="container mt-5">
