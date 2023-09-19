@@ -4,7 +4,7 @@ const methodOverride = require('method-override')
 const app = express()
 const port = 3000
 
-const router = require('./routs')
+const router = require('./routes')
 
 
 app.engine('.hbs',engine({extname:'.hbs'}))
