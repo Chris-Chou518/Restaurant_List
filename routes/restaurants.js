@@ -5,7 +5,7 @@ const db = require('../models')
 const Restaurant = db.Restaurant
 
 //Read
-router.get('/Restaurants', (req, res) => {
+router.get('/Restaurants', (req, res, next) => {
   const keywords = req.query.keyword || req.query.category
   return Restaurant.findAll(
     {raw:true}
@@ -16,8 +16,12 @@ router.get('/Restaurants', (req, res) => {
   .then((restaurant) => {
     res.render('index',{restaurants: restaurant, keywords})
   })
+  .catch(() => {
+    error.errorMessage = '資料取得失敗'
+    next(error)
+  })
 })
-router.get('/Restaurants/:id', (req, res) => {
+router.get('/Restaurants/:id', (req, res, next) => {
   const id = req.params.id
   return Restaurant.findByPk(id,{
     raw:true
@@ -25,13 +29,17 @@ router.get('/Restaurants/:id', (req, res) => {
   .then((restaurant) => {
     res.render('show', {restaurant}) 
   })
+  .catch((error) => {
+    error.errorMessage = '資料取得失敗'
+    next(error)
+  })
 })
 
 //Create
 router.get('/Restaurants/one/new', (req, res) => {
  return res.render('new')
 })
-router.post('/Restaurants', (req, res) => {
+router.post('/Restaurants', (req, res, next) => {
   const body =req.body
   return Restaurant.create({
     name: body.name,
@@ -44,18 +52,32 @@ router.post('/Restaurants', (req, res) => {
     rating: body.rating,
     description:body.description
   })
-  .then(() => {res.redirect('/Restaurants')})   
+  .then(() => {
+    req.flash('success', '新增成功')
+    return res.redirect('/Restaurants')
+  })
+  .catch((error) => {
+    error.errorMessage = '新增失敗'
+    next(error)
+  })   
 })
 
 //Update
-router.get('/Restaurants/:id/edit', (req, res) => {
+router.get('/Restaurants/:id/edit', (req, res, next) => {
   const id = req.params.id
   return Restaurant.findByPk(id,{
     raw:true
   })
-  .then((restaurant) => res.render('edit',{restaurant}))
+  .then((restaurant) => {
+    req.flash('success', '更新成功')
+    return res.render('edit',{restaurant})
+  })
+  .catch((error) => {
+    error.errorMessage = '更新失敗'
+    next(error)
+  })
 })
-router.put('/Restaurants/:id', (req, res) => {
+router.put('/Restaurants/:id', (req, res, next) => {
   const body = req.body
   const id = req.params.id
   return Restaurant.update({
@@ -69,14 +91,28 @@ router.put('/Restaurants/:id', (req, res) => {
     rating: body.rating,
     description:body.description
 },{where:{id:id}})
-  .then(() => res.redirect(`/Restaurants/${id}`))
+  .then(() => {
+    req.flash('success', '更新成功')
+    return res.redirect(`/Restaurants/${id}`)
+  })
+  .catch((error) => {
+    error.errorMessage = '更新失敗'
+    next(error)
+  })
 })
 
 //Delete
-router.delete('/Restaurants/:id', (req,res) => {
+router.delete('/Restaurants/:id', (req, res, next) => {
   const id =req.params.id
   return Restaurant.destroy({where:{id}})
-  .then(() => res.redirect('/Restaurants'))
+  .then(() => {
+    req.flash('success', '刪除成功')
+    res.redirect('/Restaurants')
+  })
+  .catch((error) => {
+    error.errorMessage = '刪除失敗'
+    next(error)    
+  })
 })
 
 module.exports = router
