@@ -12,7 +12,7 @@ router.post('/users',(req, res, next) => {
   }
   if  (password !== confirmPassword) {
     req.flash('error', '驗證密碼與密碼不符')
-    return res.redirect('back')
+    return res.redirect('back')   
   }
   return User.count({where: {email}})
     .then((rowCount) => {
@@ -25,15 +25,12 @@ router.post('/users',(req, res, next) => {
     .then((user) => {
       if (!user) {return res,redirect('back')}
       req.flash('success', '註冊成功')
-      return res.redirect('/Login')
+      return res.redirect('/login')
     })
     .catch((error) => {
       error.errorMessage = '註冊失敗'
       next(error)
     })
-
-
-
 })
 
 module.exports = router

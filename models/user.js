@@ -2,7 +2,7 @@
 const {
   Model
 } = require('sequelize');
-const { use } = require('../routes');
+// const { use } = require('../routes');  不懂為何自己跑出來?? 害我debug很久
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
