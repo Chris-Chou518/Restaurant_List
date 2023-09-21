@@ -4,6 +4,10 @@ const methodOverride = require('method-override')
 const app = express()
 const port = 3000
 
+if (process.env.NODE_ENV === 'development') {
+  require('dotenv').config()
+}
+
 const passport = require('passport')
 
 const flash = require('connect-flash')
@@ -13,6 +17,7 @@ const router = require('./routes')
 
 const messageHandler = require('./middlewares/message-handler')
 const errorHandler = require('./middlewares/error-handler')
+const { config } = require('dotenv')
 
 
 app.engine('.hbs',engine({extname:'.hbs'}))
@@ -24,7 +29,7 @@ app.use(express.static('public'))
 app.use(methodOverride('_method'))
 
 app.use(session({
-  secret: 'ThisIsSecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false
 }))
