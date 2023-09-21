@@ -34,13 +34,13 @@ passport.deserializeUser((user, done) => {
 	done(null, { id: user.id })
 })
 
-
+const authHandler = require('../middlewares/auth-handler')
 
 const restaurants = require('./restaurants')
 const users = require('./users')
 
 
-router.use(restaurants)
+router.use('/Restaurants', authHandler, restaurants)  //router.use( authHandler, restaurants)寫這樣無效
 router.use(users)
 
 router.get('/', (req, res) => {
@@ -58,8 +58,13 @@ router.post('/login', passport.authenticate('local', {
   failureFlash: true
 }))
 
-router.post('logout',(req, res) => {
-  return res.send('logout')
+router.post('/logout',(req, res, next) => {
+  req.logout((error) => {
+    if (error) {
+      next(error)
+    }
+    return res.redirect('/login')
+  })
 })
 
 

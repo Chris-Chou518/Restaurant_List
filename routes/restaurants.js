@@ -5,7 +5,7 @@ const db = require('../models')
 const Restaurant = db.Restaurant
 
 //Read
-router.get('/Restaurants', (req, res, next) => {
+router.get('/', (req, res, next) => {
   const keywords = req.query.keyword || req.query.category
   return Restaurant.findAll(
     {raw:true}
@@ -21,7 +21,7 @@ router.get('/Restaurants', (req, res, next) => {
     next(error)
   })
 })
-router.get('/Restaurants/:id', (req, res, next) => {
+router.get('/:id', (req, res, next) => {
   const id = req.params.id
   return Restaurant.findByPk(id,{
     raw:true
@@ -36,10 +36,10 @@ router.get('/Restaurants/:id', (req, res, next) => {
 })
 
 //Create
-router.get('/Restaurants/one/new', (req, res) => {
+router.get('/one/new', (req, res) => {
  return res.render('new')
 })
-router.post('/Restaurants', (req, res, next) => {
+router.post('/', (req, res, next) => {
   const body =req.body
   return Restaurant.create({
     name: body.name,
@@ -63,7 +63,7 @@ router.post('/Restaurants', (req, res, next) => {
 })
 
 //Update
-router.get('/Restaurants/:id/edit', (req, res, next) => {
+router.get('/:id/edit', (req, res, next) => {
   const id = req.params.id
   return Restaurant.findByPk(id,{
     raw:true
@@ -77,7 +77,7 @@ router.get('/Restaurants/:id/edit', (req, res, next) => {
     next(error)
   })
 })
-router.put('/Restaurants/:id', (req, res, next) => {
+router.put('/:id', (req, res, next) => {
   const body = req.body
   const id = req.params.id
   return Restaurant.update({
@@ -102,7 +102,7 @@ router.put('/Restaurants/:id', (req, res, next) => {
 })
 
 //Delete
-router.delete('/Restaurants/:id', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
   const id =req.params.id
   return Restaurant.destroy({where:{id}})
   .then(() => {
