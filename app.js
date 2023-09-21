@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'development') {
   require('dotenv').config()
 }
 
-const passport = require('passport')
+const passport = require('./config/passport')
 
 const flash = require('connect-flash')
 const session =require('express-session')
