@@ -39,15 +39,21 @@ npm install  //安裝套件
 
 4.開啟程式後輸入:
 - 啟動環境設置:
+
 將環境變數NODE_ENV設置為development
+
 Powershell(windows):
 ```
 $Env:NODE_ENV:'development'
 ```
 - 需要有.env檔啟用相關環境參數: 
-SESSION_SECRET: 自行設定。  
+
+SESSION_SECRET: 自行設定。
+
 FACEBOOK_CLIENT_ID: 可從facebook developer中設定。
+
 FACEBOOK_CLIENT_SECRET: 可從facebook developer中設定。
+
 FACEBOOK_CALLBACK_URL: http://localhost:3000/oauth2/redirect/facebook (localhost:3000部分可自行設定)。
 
 
