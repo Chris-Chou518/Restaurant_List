@@ -4,8 +4,8 @@
 
 # 首頁圖
 
-![img-02]
-![img-03]
+![img-02](https://github.com/Chris-Chou518/Restaurant_List/blob/main/picture/restaurant%20list02.png)
+![img-03](https://github.com/Chris-Chou518/Restaurant_List/blob/main/picture/restaurant03.png)
 
 ## 功能
 註冊和登入:
