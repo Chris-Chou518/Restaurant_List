@@ -4,7 +4,7 @@
 
 # 首頁圖
 
-![img-02](https://github.com/Chris-Chou518/Restaurant_List/blob/main/picture/restaurant%20list02.png)
+![img-02](https://github.com/Chris-Chou518/Restaurant_List/blob/main/picture/restaurant1.png)
 ![img-03](https://github.com/Chris-Chou518/Restaurant_List/blob/main/picture/restaurant4.png)
 
 ## 功能
