@@ -12,28 +12,28 @@ module.exports = {
      *   isBetaMember: false
      * }], {});
     */
-    let transaction
+   
 
-    try {
-    const bcrypt = require('bcryptjs')
-    const hash = await bcrypt.hash(123455678, 10)
-
-    transaction = await queryInterface.sequelize.transaction()
+  
+    // const bcrypt = require('bcryptjs')
+    // const hash = await bcrypt.hash(123455678, 10)
+    
+      //不用transaction是因為restaurant table 的FK userId，需要先將user table建出來
 
     await queryInterface.bulkInsert('Users', [
       {
-        id: 1,
+        // id: 1,          因為是主鑑id 有auto increment，不用在這寫出來
         name: 'user1',
         email: 'user1@example.com',
-        password: hash,
+        password: '12345678',
         createdAt: new Date(),
         updatedAt: new Date()
       },
       {
-        id: 1,
+        // id: 1,
         name: 'user2',
         email: 'user2@example.com',
-        password: hash,
+        password: '12345678',
         createdAt: new Date(),
         updatedAt: new Date()
       }
@@ -42,7 +42,7 @@ module.exports = {
     await queryInterface.bulkInsert('Restaurants',
       [
     {
-      id: 1,
+      id: 1,                          //沒有規定auto incremant，但為PK故要照順序123...
       name: "Sababa 沙巴巴中東美食",
       name_en: "Sababa Pita Bar",
       category: "中東料理",
@@ -161,14 +161,9 @@ module.exports = {
       updatedAt: new Date(),
       userId: 2      
     }
-  ],
-   { transaction }
-  )   
+  ])   
 
-  await transaction.commit()
-    } catch (error) {
-      if (transaction) await transaction.rollback()
-    } 
+ 
   },
 
   async down (queryInterface, Sequelize) {
