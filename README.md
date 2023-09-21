@@ -19,15 +19,15 @@ CRUD:
 * 可關鍵字搜尋餐廳名稱或類別
 
 ## 安裝
-1.確認有安裝node.js、npm與nodemon套件
+1. 確認有安裝node.js、npm與nodemon套件
 
-2.開啟終端機(Terminal)cd 到存放專案本機位置並執行:
+2. 開啟終端機(Terminal)cd 到存放專案本機位置並執行:
 
 ```
 git clone https://github.com/Chris-Chou518/Restaurant_List.git
 ```
 
-3.透過終端機進入資料夾
+3. 透過終端機進入資料夾
 
 ```
 cd Restaurant_List_  //切至專案資料夾
@@ -36,15 +36,19 @@ cd Restaurant_List_  //切至專案資料夾
 ```
 npm install  //安裝套件
 ```
+4. 在MySQL中創建資料庫:
+```
+CREATE DATABASE restaurant
+```
 
-4.開啟程式後輸入:
+5. 開啟程式後輸入:
 - 啟動環境設置:
 
 將環境變數NODE_ENV設置為development
 
 Powershell(windows):
 ```
-$Env:NODE_ENV:'development'
+$Env:NODE_ENV = 'development'
 ```
 - 需要有.env檔啟用相關環境參數: 
 
@@ -72,13 +76,13 @@ npm run dev
 
 請至[http://localhost:3000](http://localhost:3000)開始使用程式
 
-5. 內建試用帳號
+6. 內建試用帳號
 ```
 帳號: user1@example.com
 密碼: 12345678
 ```
 
-6. 若欲暫停使用
+7. 若欲暫停使用
 ```
 ctrl+c
 ```
