@@ -45,5 +45,5 @@ app.use(router)
 app.use(errorHandler)
 
 app.listen(port, () =>{
-  console.log(`Express server is on localhost:${port}`)
+  console.log(`Express server is on http://localhost:${port}`)
 })
