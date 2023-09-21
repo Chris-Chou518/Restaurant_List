@@ -15,8 +15,8 @@ module.exports = {
    
 
   
-    // const bcrypt = require('bcryptjs')
-    // const hash = await bcrypt.hash(123455678, 10)
+    const bcrypt = require('bcryptjs')
+    const hash = await bcrypt.hash('12345678', 10)
     
       //不用transaction是因為restaurant table 的FK userId，需要先將user table建出來
 
@@ -25,7 +25,7 @@ module.exports = {
         // id: 1,          因為是主鑑id 有auto increment，不用在這寫出來
         name: 'user1',
         email: 'user1@example.com',
-        password: '12345678',
+        password: hash,
         createdAt: new Date(),
         updatedAt: new Date()
       },
@@ -33,11 +33,11 @@ module.exports = {
         // id: 1,
         name: 'user2',
         email: 'user2@example.com',
-        password: '12345678',
+        password: hash,
         createdAt: new Date(),
         updatedAt: new Date()
       }
-    ], { transaction })
+    ])
 
     await queryInterface.bulkInsert('Restaurants',
       [
